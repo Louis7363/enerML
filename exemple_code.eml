@@ -1,0 +1,26 @@
+				enerML
+
+Exemple de code :
+
+budget 50 mJ par cycle;
+# ou bien autonomie 1 an, batterie 2000 mAh 3.7 V;
+temperature t1 : broche;
+led l1 : broche;
+wifi w : "nom", "motdepasse";
+bluetooth bl : "nom";
+constante entier a = 3;
+constante entier b = 89;
+toutes 60 s {
+  flottant t = lire(t1);
+  si t > 30 { 
+	allumer(bl);
+	envoyer(t,bl);
+	eteindre(bl); 
+}
+  pour i:a:b { 
+	clignoter(l1, 5 ms);
+	allumer(l1);
+	pause(5 ms);
+	eteindre(l1);
+ } #i prends les valeurs 3,...,89 avec 3 et 89 compris
+}
