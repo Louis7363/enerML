@@ -1,0 +1,31 @@
+		Grammaire EnerML (BNF) 
+
+(inspiré de https://cs.wmich.edu/~gupta/teaching/cs4850/sumII06/The%20syntax%20of%20C%20in%20Backus-Naur%20form.htm)
+
+<type_var> ::= entier
+	    | flottant
+	    | texte
+
+
+<type_comp> ::=  | temperature
+	    	         | led
+	         
+
+<type_transmition> ::= wifi
+	                    | bluetooth
+
+<type-qualifier> ::= const
+
+<declaration_var> ::= {<type-qualifier>}? <type_var> <identifiant> = <expression>;
+<declaration_comp> ::= <type_comp> <identifiant> : <expression>;
+<declaration_transmition> ::= <type_transmition> <identifiant> : <expression> {expression}?
+
+<iteration> ::= pour <identifiant>:<expression>:<expression> {
+    <expression>
+  }
+
+
+
+
+
+
