@@ -14,7 +14,7 @@
 <type_transmition> ::= wifi
 	                    | bluetooth
 
-<type-qualifier> ::= const
+<type-qualifier> ::= constante
 
 <declaration_var> ::= {<type-qualifier>}? <type_var> <identifiant> = <expression>;
 <declaration_comp> ::= <type_comp> <identifiant> : <expression>;
