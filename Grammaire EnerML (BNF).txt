@@ -1,31 +1,82 @@
-		Grammaire EnerML (BNF) 
-
+                            Grammaire EnerML (BNF)
 (inspiré de https://cs.wmich.edu/~gupta/teaching/cs4850/sumII06/The%20syntax%20of%20C%20in%20Backus-Naur%20form.htm)
 
-<type_var> ::= entier
-	    | flottant
-	    | texte
+<type_var> ::= "entier"
+             | "flottant"
+             | "texte"
+
+<type_comp> ::= "temperature"
+              | "led"
+
+<type_transmission> ::= "wifi"
+                      | "bluetooth"
+
+<type-qualifier> ::= "constante"
+
+<declaration_var> ::= {<type-qualifier>}? <type_var> <identifiant> "=" <expression> ";"
+<declaration_comp> ::= <type_comp> <identifiant> ":" <expression> ";"
+<declaration_transmission> ::= <type_transmission> <identifiant> ":" <expression> {"," <expression>}? ";"
+
+<iteration> ::= "pour" <identifiant> ":" <expression> ":" <expression> "{" <suiteInstruction> "}"
+              | "toutes" <expression> <unite> "{" <suiteInstruction> "}"
+
+<suiteInstruction> ::= <instruction> <suiteInstruction>
+                     | ε
+
+<declaration> ::= <declaration_var>
+                | <declaration_transmission>
+                | <declaration_comp>
+
+<instruction> ::= <declaration>
+                | <action>
+                | <iteration>
+                | <conditionnel>
+
+<action> ::= "allumer" "(" <identifiant> ")" ";"
+           | "envoyer" "(" <expression> "," <identifiant> ")" ";"
+           | "eteindre" "(" <identifiant> ")" ";"
+           | "clignoter" "(" <identifiant> "," <expression> <unite> ")" ";"
+           | "pause" "(" <expression> <unite> ")" ";"
+
+<expression> ::= <calcul>
+               | "lire" "(" <identifiant> ")"
+               | <texte>
+
+<unite> ::= "s" | "ms" | "an" | "mAh" | "Ah" | "V" | "mV" | "mJ" | "J" | "cycle"
+
+<conditionnel> ::= "si" <booleen> "{" <suiteInstruction> "}"
+                   {"sinon" "{" <suiteInstruction> "}"}?
+
+<booleen> ::= "vrai"
+            | "faux"
+            | <expression> <verificateur> <expression>
+            | {"non"}? "(" <booleen> <logique_operateur> <booleen> ")"
+
+<verificateur> ::= "==" | ">" | ">=" | "<" | "<=" | "!="
+
+<logique_operateur> ::= "&&"
+                      | "||"
+
+<condition_energie> ::= "budget" <expression> <unite> "par" <unite> ";"
+                      | "autonomie" <expression> <unite> "," "batterie" <expression> <unite> <expression> <unite> ";"
+
+<calcul_operator> ::= "+" | "*" | "/" | "-"
+
+<calcul> ::= "(" <calcul> <calcul_operator> <calcul> ")"
+           | <nombre>
+           | <flottant>
+           | <identifiant>
+
+<programme> ::= <condition_energie> <suiteInstruction>
+
+Lexique :
+
+<identifiant>  ::= [a-zA-Z][a-zA-Z0-9_]*
+<nombre>       ::= [0-9]+
+<flottant>     ::= [0-9]+ "." [0-9]+
+<texte>        ::= '"' [^"]* '"'
+commentaire    ::= "#" [^\n]*      
 
 
-<type_comp> ::=  | temperature
-	    	         | led
-	         
-
-<type_transmition> ::= wifi
-	                    | bluetooth
-
-<type-qualifier> ::= constante
-
-<declaration_var> ::= {<type-qualifier>}? <type_var> <identifiant> = <expression>;
-<declaration_comp> ::= <type_comp> <identifiant> : <expression>;
-<declaration_transmition> ::= <type_transmition> <identifiant> : <expression> {expression}?
-
-<iteration> ::= pour <identifiant>:<expression>:<expression> {
-    <expression>
-  }
-
-
-
-
-
+Note : les unités sont des mots réservés.
 
