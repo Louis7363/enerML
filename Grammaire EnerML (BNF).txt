@@ -60,9 +60,9 @@
 <condition_energie> ::= "budget" <expression> <unite> "par" <unite> ";"
                       | "autonomie" <expression> <unite> "," "batterie" <expression> <unite> <expression> <unite> ";"
 
-<calcul_operator> ::= "+" | "*" | "/" | "-"
+<calcul_operateurr> ::= "+" | "*" | "/" | "-"
 
-<calcul> ::= "(" <calcul> <calcul_operator> <calcul> ")"
+<calcul> ::= "(" <calcul> <calcul_operateur> <calcul> ")"
            | <nombre>
            | <flottant>
            | <identifiant>
