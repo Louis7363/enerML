@@ -1,4 +1,4 @@
-{ (*NOTE POUR PLUS TARD : j'ai pas encore testé mais à faire avant le parser*)
+{ 
   type jeton =
     | SI | SINON | POUR | TOUTES | LIRE
     | ALLUMER | ENVOYER | ETEINDRE | CLIGNOTER | PAUSE
