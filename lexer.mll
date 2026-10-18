@@ -1,23 +1,5 @@
 { 
-  type jeton =
-    | SI | SINON | POUR | TOUTES | LIRE
-    | ALLUMER | ENVOYER | ETEINDRE | CLIGNOTER | PAUSE
-    | ENTIER | FLOTTANT | TEXTE
-    | TEMPERATURE | LED | WIFI | BLUETOOTH | CONSTANTE
-    | BUDGET | AUTONOMIE | BATTERIE | PAR
-    | VRAI | FAUX | NON
-    | S | MS | AN | MAH | AH | V | MV | MJ | J | CYCLE
-    | EGAL | EGAL_EGAL | DIFFERENT
-    | SUP | SUP_EGAL | INF | INF_EGAL
-    | ET | OU
-    | PLUS | MOINS | FOIS | DIVISE
-    | PAR_G | PAR_D | ACCOLADE_G | ACCOLADE_D
-    | POINT_VIRGULE | DEUX_POINTS | VIRGULE
-    | IDENT of string
-    | NOMBRE of int
-    | DECIMAL of float
-    | CHAINE of string
-    | FIN
+  open Parser
 }
 
 rule next_token = parse
@@ -48,16 +30,16 @@ rule next_token = parse
   | "vrai"         { VRAI }
   | "faux"         { FAUX }
   | "non"          { NON }
-  | "s"     { S }
-  | "ms"    { MS }
-  | "an"    { AN }
-  | "mAh"   { MAH }
-  | "Ah"    { AH }
-  | "V"     { V }
-  | "mV"    { MV }
-  | "mJ"    { MJ }
-  | "J"     { J }
-  | "cycle" { CYCLE }
+  | "s"     { U_S }
+  | "ms"    { U_MS }
+  | "an"    { U_AN }
+  | "mAh"   { U_MAH }
+  | "Ah"    { U_AH }
+  | "V"     { U_V }
+  | "mV"    { U_MV }
+  | "mJ"    { U_MJ }
+  | "J"     { U_J }
+  | "cycle" { U_CYCLE }
   | "=="  { EGAL_EGAL }
   | "="   { EGAL }
   | "!="  { DIFFERENT }

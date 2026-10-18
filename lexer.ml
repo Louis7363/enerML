@@ -1,26 +1,8 @@
 # 1 "lexer.mll"
- 
-  type jeton =
-    | SI | SINON | POUR | TOUTES | LIRE
-    | ALLUMER | ENVOYER | ETEINDRE | CLIGNOTER | PAUSE
-    | ENTIER | FLOTTANT | TEXTE
-    | TEMPERATURE | LED | WIFI | BLUETOOTH | CONSTANTE
-    | BUDGET | AUTONOMIE | BATTERIE | PAR
-    | VRAI | FAUX | NON
-    | S | MS | AN | MAH | AH | V | MV | MJ | J | CYCLE
-    | EGAL | EGAL_EGAL | DIFFERENT
-    | SUP | SUP_EGAL | INF | INF_EGAL
-    | ET | OU
-    | PLUS | MOINS | FOIS | DIVISE
-    | PAR_G | PAR_D | ACCOLADE_G | ACCOLADE_D
-    | POINT_VIRGULE | DEUX_POINTS | VIRGULE
-    | IDENT of string
-    | NOMBRE of int
-    | DECIMAL of float
-    | CHAINE of string
-    | FIN
+  
+  open Parser
 
-# 24 "lexer.ml"
+# 6 "lexer.ml"
 let __ocaml_lex_tables = {
   Lexing.lex_base =
    "\000\000\193\255\194\255\078\000\002\000\155\000\199\255\200\255\
@@ -2981,344 +2963,344 @@ let rec next_token lexbuf =
 and __ocaml_lex_next_token_rec lexbuf __ocaml_lex_state =
   match Lexing.engine __ocaml_lex_tables __ocaml_lex_state lexbuf with
       | 0 ->
-# 24 "lexer.mll"
+# 6 "lexer.mll"
                           ( next_token lexbuf )
-# 2987 "lexer.ml"
+# 2969 "lexer.ml"
 
   | 1 ->
-# 25 "lexer.mll"
+# 7 "lexer.mll"
                           ( next_token lexbuf )
-# 2992 "lexer.ml"
+# 2974 "lexer.ml"
 
   | 2 ->
-# 26 "lexer.mll"
+# 8 "lexer.mll"
                    ( SI )
-# 2997 "lexer.ml"
+# 2979 "lexer.ml"
 
   | 3 ->
-# 27 "lexer.mll"
+# 9 "lexer.mll"
                    ( SINON )
-# 3002 "lexer.ml"
+# 2984 "lexer.ml"
 
   | 4 ->
-# 28 "lexer.mll"
+# 10 "lexer.mll"
                    ( POUR )
-# 3007 "lexer.ml"
+# 2989 "lexer.ml"
 
   | 5 ->
-# 29 "lexer.mll"
+# 11 "lexer.mll"
                    ( TOUTES )
-# 3012 "lexer.ml"
+# 2994 "lexer.ml"
 
   | 6 ->
-# 30 "lexer.mll"
+# 12 "lexer.mll"
                    ( LIRE )
-# 3017 "lexer.ml"
+# 2999 "lexer.ml"
 
   | 7 ->
-# 31 "lexer.mll"
+# 13 "lexer.mll"
                    ( ALLUMER )
-# 3022 "lexer.ml"
+# 3004 "lexer.ml"
 
   | 8 ->
-# 32 "lexer.mll"
+# 14 "lexer.mll"
                    ( ENVOYER )
-# 3027 "lexer.ml"
+# 3009 "lexer.ml"
 
   | 9 ->
-# 33 "lexer.mll"
+# 15 "lexer.mll"
                    ( ETEINDRE )
-# 3032 "lexer.ml"
+# 3014 "lexer.ml"
 
   | 10 ->
-# 34 "lexer.mll"
+# 16 "lexer.mll"
                    ( CLIGNOTER )
-# 3037 "lexer.ml"
+# 3019 "lexer.ml"
 
   | 11 ->
-# 35 "lexer.mll"
+# 17 "lexer.mll"
                    ( PAUSE )
-# 3042 "lexer.ml"
+# 3024 "lexer.ml"
 
   | 12 ->
-# 36 "lexer.mll"
+# 18 "lexer.mll"
                    ( ENTIER )
-# 3047 "lexer.ml"
+# 3029 "lexer.ml"
 
   | 13 ->
-# 37 "lexer.mll"
+# 19 "lexer.mll"
                    ( FLOTTANT )
-# 3052 "lexer.ml"
+# 3034 "lexer.ml"
 
   | 14 ->
-# 38 "lexer.mll"
+# 20 "lexer.mll"
                    ( TEXTE )
-# 3057 "lexer.ml"
+# 3039 "lexer.ml"
 
   | 15 ->
-# 39 "lexer.mll"
+# 21 "lexer.mll"
                    ( TEMPERATURE )
-# 3062 "lexer.ml"
+# 3044 "lexer.ml"
 
   | 16 ->
-# 40 "lexer.mll"
+# 22 "lexer.mll"
                    ( LED )
-# 3067 "lexer.ml"
+# 3049 "lexer.ml"
 
   | 17 ->
-# 41 "lexer.mll"
+# 23 "lexer.mll"
                    ( WIFI )
-# 3072 "lexer.ml"
+# 3054 "lexer.ml"
 
   | 18 ->
-# 42 "lexer.mll"
+# 24 "lexer.mll"
                    ( BLUETOOTH )
-# 3077 "lexer.ml"
+# 3059 "lexer.ml"
 
   | 19 ->
-# 43 "lexer.mll"
+# 25 "lexer.mll"
                    ( CONSTANTE )
-# 3082 "lexer.ml"
+# 3064 "lexer.ml"
 
   | 20 ->
-# 44 "lexer.mll"
+# 26 "lexer.mll"
                    ( BUDGET )
-# 3087 "lexer.ml"
+# 3069 "lexer.ml"
 
   | 21 ->
-# 45 "lexer.mll"
+# 27 "lexer.mll"
                    ( AUTONOMIE )
-# 3092 "lexer.ml"
+# 3074 "lexer.ml"
 
   | 22 ->
-# 46 "lexer.mll"
+# 28 "lexer.mll"
                    ( BATTERIE )
-# 3097 "lexer.ml"
+# 3079 "lexer.ml"
 
   | 23 ->
-# 47 "lexer.mll"
+# 29 "lexer.mll"
                    ( PAR )
-# 3102 "lexer.ml"
+# 3084 "lexer.ml"
 
   | 24 ->
-# 48 "lexer.mll"
+# 30 "lexer.mll"
                    ( VRAI )
-# 3107 "lexer.ml"
+# 3089 "lexer.ml"
 
   | 25 ->
-# 49 "lexer.mll"
+# 31 "lexer.mll"
                    ( FAUX )
-# 3112 "lexer.ml"
+# 3094 "lexer.ml"
 
   | 26 ->
-# 50 "lexer.mll"
+# 32 "lexer.mll"
                    ( NON )
-# 3117 "lexer.ml"
+# 3099 "lexer.ml"
 
   | 27 ->
-# 51 "lexer.mll"
-            ( S )
-# 3122 "lexer.ml"
+# 33 "lexer.mll"
+            ( U_S )
+# 3104 "lexer.ml"
 
   | 28 ->
-# 52 "lexer.mll"
-            ( MS )
-# 3127 "lexer.ml"
+# 34 "lexer.mll"
+            ( U_MS )
+# 3109 "lexer.ml"
 
   | 29 ->
-# 53 "lexer.mll"
-            ( AN )
-# 3132 "lexer.ml"
+# 35 "lexer.mll"
+            ( U_AN )
+# 3114 "lexer.ml"
 
   | 30 ->
-# 54 "lexer.mll"
-            ( MAH )
-# 3137 "lexer.ml"
+# 36 "lexer.mll"
+            ( U_MAH )
+# 3119 "lexer.ml"
 
   | 31 ->
-# 55 "lexer.mll"
-            ( AH )
-# 3142 "lexer.ml"
+# 37 "lexer.mll"
+            ( U_AH )
+# 3124 "lexer.ml"
 
   | 32 ->
-# 56 "lexer.mll"
-            ( V )
-# 3147 "lexer.ml"
+# 38 "lexer.mll"
+            ( U_V )
+# 3129 "lexer.ml"
 
   | 33 ->
-# 57 "lexer.mll"
-            ( MV )
-# 3152 "lexer.ml"
+# 39 "lexer.mll"
+            ( U_MV )
+# 3134 "lexer.ml"
 
   | 34 ->
-# 58 "lexer.mll"
-            ( MJ )
-# 3157 "lexer.ml"
+# 40 "lexer.mll"
+            ( U_MJ )
+# 3139 "lexer.ml"
 
   | 35 ->
-# 59 "lexer.mll"
-            ( J )
-# 3162 "lexer.ml"
+# 41 "lexer.mll"
+            ( U_J )
+# 3144 "lexer.ml"
 
   | 36 ->
-# 60 "lexer.mll"
-            ( CYCLE )
-# 3167 "lexer.ml"
+# 42 "lexer.mll"
+            ( U_CYCLE )
+# 3149 "lexer.ml"
 
   | 37 ->
-# 61 "lexer.mll"
+# 43 "lexer.mll"
           ( EGAL_EGAL )
-# 3172 "lexer.ml"
+# 3154 "lexer.ml"
 
   | 38 ->
-# 62 "lexer.mll"
+# 44 "lexer.mll"
           ( EGAL )
-# 3177 "lexer.ml"
+# 3159 "lexer.ml"
 
   | 39 ->
-# 63 "lexer.mll"
+# 45 "lexer.mll"
           ( DIFFERENT )
-# 3182 "lexer.ml"
+# 3164 "lexer.ml"
 
   | 40 ->
-# 64 "lexer.mll"
+# 46 "lexer.mll"
           ( SUP_EGAL )
-# 3187 "lexer.ml"
+# 3169 "lexer.ml"
 
   | 41 ->
-# 65 "lexer.mll"
+# 47 "lexer.mll"
           ( SUP )
-# 3192 "lexer.ml"
+# 3174 "lexer.ml"
 
   | 42 ->
-# 66 "lexer.mll"
+# 48 "lexer.mll"
           ( INF_EGAL )
-# 3197 "lexer.ml"
+# 3179 "lexer.ml"
 
   | 43 ->
-# 67 "lexer.mll"
+# 49 "lexer.mll"
           ( INF )
-# 3202 "lexer.ml"
+# 3184 "lexer.ml"
 
   | 44 ->
-# 68 "lexer.mll"
+# 50 "lexer.mll"
           ( ET )
-# 3207 "lexer.ml"
+# 3189 "lexer.ml"
 
   | 45 ->
-# 69 "lexer.mll"
+# 51 "lexer.mll"
           ( OU )
-# 3212 "lexer.ml"
+# 3194 "lexer.ml"
 
   | 46 ->
-# 70 "lexer.mll"
+# 52 "lexer.mll"
           ( PLUS )
-# 3217 "lexer.ml"
+# 3199 "lexer.ml"
 
   | 47 ->
-# 71 "lexer.mll"
+# 53 "lexer.mll"
           ( MOINS )
-# 3222 "lexer.ml"
+# 3204 "lexer.ml"
 
   | 48 ->
-# 72 "lexer.mll"
+# 54 "lexer.mll"
           ( FOIS )
-# 3227 "lexer.ml"
+# 3209 "lexer.ml"
 
   | 49 ->
-# 73 "lexer.mll"
+# 55 "lexer.mll"
           ( DIVISE )
-# 3232 "lexer.ml"
+# 3214 "lexer.ml"
 
   | 50 ->
-# 74 "lexer.mll"
+# 56 "lexer.mll"
           ( PAR_G )
-# 3237 "lexer.ml"
+# 3219 "lexer.ml"
 
   | 51 ->
-# 75 "lexer.mll"
+# 57 "lexer.mll"
           ( PAR_D )
-# 3242 "lexer.ml"
+# 3224 "lexer.ml"
 
   | 52 ->
-# 76 "lexer.mll"
+# 58 "lexer.mll"
           ( ACCOLADE_G )
-# 3247 "lexer.ml"
+# 3229 "lexer.ml"
 
   | 53 ->
-# 77 "lexer.mll"
+# 59 "lexer.mll"
           ( ACCOLADE_D )
-# 3252 "lexer.ml"
+# 3234 "lexer.ml"
 
   | 54 ->
-# 78 "lexer.mll"
+# 60 "lexer.mll"
           ( POINT_VIRGULE )
-# 3257 "lexer.ml"
+# 3239 "lexer.ml"
 
   | 55 ->
-# 79 "lexer.mll"
+# 61 "lexer.mll"
           ( DEUX_POINTS )
-# 3262 "lexer.ml"
+# 3244 "lexer.ml"
 
   | 56 ->
-# 80 "lexer.mll"
+# 62 "lexer.mll"
           ( VIRGULE )
-# 3267 "lexer.ml"
+# 3249 "lexer.ml"
 
   | 57 ->
 let
-# 81 "lexer.mll"
+# 63 "lexer.mll"
                                  f
-# 3273 "lexer.ml"
+# 3255 "lexer.ml"
 = Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
-# 81 "lexer.mll"
+# 63 "lexer.mll"
                                     ( DECIMAL (float_of_string f) )
-# 3277 "lexer.ml"
+# 3259 "lexer.ml"
 
   | 58 ->
 let
-# 82 "lexer.mll"
+# 64 "lexer.mll"
                   n
-# 3283 "lexer.ml"
+# 3265 "lexer.ml"
 = Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
-# 82 "lexer.mll"
+# 64 "lexer.mll"
                                     ( NOMBRE (int_of_string n) )
-# 3287 "lexer.ml"
+# 3269 "lexer.ml"
 
   | 59 ->
 let
-# 83 "lexer.mll"
+# 65 "lexer.mll"
                      t
-# 3293 "lexer.ml"
+# 3275 "lexer.ml"
 = Lexing.sub_lexeme lexbuf (lexbuf.Lexing.lex_start_pos + 1) (lexbuf.Lexing.lex_curr_pos + -1) in
-# 83 "lexer.mll"
+# 65 "lexer.mll"
                                    ( CHAINE t )
-# 3297 "lexer.ml"
+# 3279 "lexer.ml"
 
   | 60 ->
 let
-# 84 "lexer.mll"
+# 66 "lexer.mll"
                                                         nom
-# 3303 "lexer.ml"
+# 3285 "lexer.ml"
 = Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
-# 84 "lexer.mll"
+# 66 "lexer.mll"
                                                              ( IDENT nom )
-# 3307 "lexer.ml"
+# 3289 "lexer.ml"
 
   | 61 ->
-# 85 "lexer.mll"
+# 67 "lexer.mll"
          ( FIN )
-# 3312 "lexer.ml"
+# 3294 "lexer.ml"
 
   | 62 ->
 let
-# 86 "lexer.mll"
+# 68 "lexer.mll"
          c
-# 3318 "lexer.ml"
+# 3300 "lexer.ml"
 = Lexing.sub_lexeme_char lexbuf lexbuf.Lexing.lex_start_pos in
-# 86 "lexer.mll"
-            ( failwith (Printf.sprintf "Caractère inattendu : %c" c) )
-# 3322 "lexer.ml"
+# 68 "lexer.mll"
+            ( failwith "caractère non attendu" )
+# 3304 "lexer.ml"
 
   | __ocaml_lex_state -> lexbuf.Lexing.refill_buff lexbuf;
       __ocaml_lex_next_token_rec lexbuf __ocaml_lex_state

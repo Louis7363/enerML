@@ -1,4 +1,4 @@
-open Ast 
+open Ast
 
 let progr = (Budget(Calcul(Nombre(5)), MJ, Cycle)), 
 [Declaration(DeclComp(Led,"l1",Calcul(Nombre(5)))); 
