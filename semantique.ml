@@ -2,7 +2,18 @@ open Ast
 
 exception VariableNoDecl of identifiant
 exception MauvaisType of identifiant 
+exception PasConst of identifiant
 
+
+let verifboucle boucle thash= 
+   try 
+   match boucle with
+   | Iteration(Pour(id,a,b,l)) -> if not(Hashtbl.find thash id = "VarC") then (
+      raise( PasConst(id))
+   )
+   | _ -> ()
+with 
+   | PasConst (id)-> Printf.printf "%s doit être une constante (boucle pour)" id
 let verification_variables programme = 
    try
   let thash = Hashtbl.create 10 in
@@ -10,8 +21,8 @@ let verification_variables programme =
   
       | (Declaration(DeclComp (a, id, b)))::q -> Hashtbl.add thash id "Comp"; aux q 
       | (Declaration(DeclTransmission(a,id,l)))::q -> Hashtbl.add thash id "Trans"; aux q 
-      | Declaration(DeclVar(a,b,id,c))::q -> Hashtbl.add thash id "Var"; aux q 
-      | Iteration(Pour(id,a,b,l))::q -> Hashtbl.add thash id "Var"; aux l; aux q
+      | Declaration(DeclVar(a,b,id,c))::q -> if a = true then Hashtbl.add thash id "VarC" else Hashtbl.add thash id "Var"; aux q 
+      | Iteration(Pour(id,a,b,l))::q -> Hashtbl.add thash id "Var"; aux l; aux q; 
       | Iteration(Toutes (_,_,l))::q -> aux l; aux q
       | Action(Allumer(id))::q | Action(Eteindre(id))::q 
          -> if (Hashtbl.mem thash id) then 
@@ -40,3 +51,4 @@ let verification_variables programme =
 with
    | VariableNoDecl(id) -> Printf.printf "La variable %s non declare" id
    | MauvaisType(id)-> Printf.printf "La variable %s n'a pas le bon type" id
+
