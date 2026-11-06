@@ -1,0 +1,3 @@
+menhir --infer parser.mly
+ocamllex lexer.mll
+ocamlc ast.ml parser.mli parser.ml lexer.ml main.ml -o enerml

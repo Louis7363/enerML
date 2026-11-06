@@ -6,7 +6,7 @@ bluetooth bl : "nom";
 constante entier a = 3;
 constante entier b = 89;
 toutes 60 s {
-  flottant t = lire(t1);
+  flottant t = lire(Louis);
   si t > 30 { 
 	allumer(bl);
 	envoyer(t,bl);
