@@ -5,6 +5,7 @@ exception MauvaisType of identifiant
 exception PasConst of identifiant
 exception FlottantBoucle of identifiant
 
+
 let rec verifboucle a thash id = 
    match a with 
     | Lire(_) -> raise (PasConst id)
@@ -14,16 +15,17 @@ let rec verifboucle a thash id =
     | Calcul(Id(ide)) -> if not (Hashtbl.find thash ide = "VarC") then raise (PasConst id)
     | Calcul(Operation(c1, signe, c2)) -> verifboucle (Calcul(c1)) thash id; verifboucle (Calcul(c2)) thash id
 
-
+let thash = Hashtbl.create 10
+let hashval = Hashtbl.create 10
 
 let verification_variables programme = 
    try
-  let thash = Hashtbl.create 10 in
   let rec aux l = match l with 
   
       | (Declaration(DeclComp (a, id, b)))::q -> Hashtbl.add thash id "Comp"; aux q 
       | (Declaration(DeclTransmission(a,id,l)))::q -> Hashtbl.add thash id "Trans"; aux q 
-      | Declaration(DeclVar(a,b,id,c))::q -> if a = true then Hashtbl.add thash id "VarC" else Hashtbl.add thash id "Var"; aux q 
+      | Declaration(DeclVar(a,b,id,c))::q -> if a = true then (Hashtbl.add thash id "VarC"; Hashtbl.add hashval id c
+         )else Hashtbl.add thash id "Var"; aux q 
       | Iteration(Pour(id,a,b,l))::q -> Hashtbl.add thash id "Var"; aux l; aux q; verifboucle a thash id; verifboucle b thash id
       | Iteration(Toutes (_,_,l))::q -> aux l; aux q
       | Action(Allumer(id))::q | Action(Eteindre(id))::q 
@@ -45,7 +47,7 @@ let verification_variables programme =
          ;if not(Hashtbl.find thash id = "Comp") then
             raise (MauvaisType (id))
       | Conditionnel(Si(_,l2,l3))::q -> aux l2; aux l3; aux q
-      | _ -> print_string "Tout bon"
+      | _ -> ()
    
 (*ATTENTION ! IL ME MANQUE LE CAS LIRE (qqch) MAIS JE SAIS PAS ENCORE COMMENT FAIRE*)
 
