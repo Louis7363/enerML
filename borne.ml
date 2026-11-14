@@ -46,13 +46,13 @@ let calbor = function
   let rec bornel = function
     | [] -> 0
     | Declaration(_)::q -> bornel q
-    | Action(a)::q -> calbor a + bornel q
-    | Iteration(i)::q -> itebor i + bornel q
-    | Conditionnel(c)::q -> conbor c + bornel q
+    | Action(a)::q -> let x = calbor a in x + bornel q
+   | Iteration(i)::q -> let x = itebor i in x + bornel q
+   | Conditionnel(c)::q -> let x = conbor c in x + bornel q
 and conbor = function (*Peut être envisager un solveur SAT pour gagner un peu ? faudra que je fasse des calculs pour vérifier, ou alors faute du développeur *)
     | Si (Vrai, l1, l2) -> bornel l1
     |  Si (Faux, l1, l2) ->bornel l2
-    | Si (_, l1, l2) -> max (bornel l1) (bornel l2)
+    | Si (_, l1, l2) -> let b1 = bornel l1 in let b2 = bornel l2 in max b1 b2
 
 and itebor = function
   | Pour (id, Calcul(a), Calcul(b), l) ->( let na = calcul_valeur_f a in let nb = calcul_valeur_f b in
