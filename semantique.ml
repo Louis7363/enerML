@@ -47,6 +47,7 @@ let verification_variables programme =
          ;if not(Hashtbl.find thash id = "Comp") then
             raise (MauvaisType (id))
       | Conditionnel(Si(_,l2,l3))::q -> aux l2; aux l3; aux q
+      | p::q -> aux q;
       | _ -> ()
    
 (*ATTENTION ! IL ME MANQUE LE CAS LIRE (qqch) MAIS JE SAIS PAS ENCORE COMMENT FAIRE*)

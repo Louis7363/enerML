@@ -7,7 +7,7 @@ let calcul_valeur c1 op c2 =
          Nombre(a1 + a2)
       | Flottant (a1) , Addition, Flottant(a2) -> Flottant(a1 +. a2)
       | Nombre(a1) , Soustraction, Nombre(a2) -> 
-         Nombre(a1 + a2)
+         Nombre(a1 - a2)
       | Flottant (a1) , Soustraction, Flottant(a2) -> Flottant(a1 -. a2)      
       | Nombre(a1) , Multiplication, Nombre(a2) -> 
          Nombre(a1 * a2)
@@ -18,7 +18,7 @@ let calcul_valeur c1 op c2 =
       | _ -> failwith "erreur"
 
 let rec calcul_valeur_f = function
-    | Operation (c1, s, c2) -> calcul_valeur c1 s c2
+    | Operation (c1, s, c2) -> calcul_valeur (calcul_valeur_f c1) s (calcul_valeur_f c2)
     | Nombre (a) -> Nombre a
     | Flottant (b) -> Flottant b 
     | Id(id) -> match Hashtbl.find hashval id with
@@ -57,8 +57,9 @@ and conbor = function (*Peut être envisager un solveur SAT pour gagner un peu ?
 and itebor = function
   | Pour (id, Calcul(a), Calcul(b), l) ->( let na = calcul_valeur_f a in let nb = calcul_valeur_f b in
                            match na, nb with
-                              | Nombre (k1), Nombre(k2) -> (k2 - k1) * bornel l
+                              | Nombre (k1), Nombre(k2) -> (k2 - k1 + 1) * bornel l
                               | _ -> failwith "erreur vérification bornes dans sémantique" )
+  | Toutes (_, _, l) -> bornel l 
   | _ -> 0
 
 
